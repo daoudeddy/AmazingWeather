@@ -1,0 +1,71 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion DefaultConfig.compileSdk
+
+    defaultConfig {
+        applicationId "com.github.amazingweather"
+        minSdkVersion DefaultConfig.minSdk
+        targetSdkVersion DefaultConfig.targetSdk
+        versionCode Releases.versionCode
+        versionName Releases.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+
+}
+
+kapt {
+    correctErrorTypes = true
+}
+
+dependencies {
+    implementation Deps.kotlin
+
+    // Support
+    implementation Deps.appcompat
+    implementation Deps.constraint
+    implementation Deps.coordinator
+    implementation Deps.recyclerView
+    implementation Deps.design
+    implementation Deps.cardview
+    implementation Deps.core
+    implementation Deps.coroutines
+    implementation Deps.viewmodel
+
+    // Network
+    implementation Deps.retrofit
+    implementation Deps.okhttp
+    implementation Deps.gson
+    implementation Deps.converterGson
+    implementation Deps.okhttpLoggingInterceptor
+
+    // Dependency injection
+    implementation Deps.daggerAndroidSupport
+    kapt Deps.daggerCompiler
+    kapt Deps.daggerAndroidProcessor
+
+    testImplementation Deps.mockk
+    testImplementation Deps.junit
+
+
+}
