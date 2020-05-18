@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="16dp"
+    android:layout_marginTop="4dp"
+
+    android:layout_marginRight="16dp"
+    android:layout_marginBottom="4dp"
+    app:cardElevation="@dimen/card_elevation">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/cityNameTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/half_margin"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Button"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Beirut" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/cityWeatherIconIV"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="@dimen/half_margin"
+            android:scaleType="centerCrop"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cityNameTV" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/half_margin"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="@+id/cityWeatherIconIV"
+            app:layout_constraintStart_toEndOf="@id/cityWeatherIconIV"
+            app:layout_constraintTop_toTopOf="@+id/cityWeatherIconIV">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/cityTempAndCondTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+                android:textStyle="bold"
+                tools:text="30° • Clear" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/cityTempHighLowTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
+                app:layout_constraintStart_toEndOf="@id/cityWeatherIconIV"
+                app:layout_constraintTop_toBottomOf="@+id/cityTempAndCondTextView"
+                tools:text="High:30° Low:16°" />
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>

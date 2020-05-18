@@ -18,4 +18,6 @@ abstract class BaseUiView {
     abstract fun areContentsTheSame(other: BaseUiView): Boolean
 
     open fun getChangePayload(other: BaseUiView): Set<String> = emptySet()
+
+    open var doAction: (action: () -> Unit) -> Unit = {}
 }

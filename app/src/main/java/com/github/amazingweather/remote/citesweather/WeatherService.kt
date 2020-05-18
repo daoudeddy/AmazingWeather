@@ -1,5 +1,7 @@
-package com.github.amazingweather.remote
+package com.github.amazingweather.remote.citesweather
 
+import com.github.amazingweather.remote.citesweather.CitiesWeatherResponse
+import com.github.amazingweather.remote.citesweather.CityWeatherResponse
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -16,5 +18,5 @@ interface WeatherService {
     fun getWeatherById(@Query("id") cityId: String): Call<CityWeatherResponse>
 
     @GET("group")
-    fun getWeatherByIds(@Query("id") id: List<String>)
+    fun getWeatherByIds(@Query("id") id: String): Call<CitiesWeatherResponse>
 }

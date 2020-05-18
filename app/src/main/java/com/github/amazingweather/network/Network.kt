@@ -5,16 +5,18 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
+
 fun createNetworkClient(baseUrl: String, debug: Boolean = false): Retrofit.Builder =
     retrofitClient(baseUrl, httpClient(debug))
 
 private fun httpClient(debug: Boolean): OkHttpClient {
     val httpLoggingInterceptor = HttpLoggingInterceptor(HttpLoggingInterceptor.Logger.DEFAULT)
-    val clientBuilder = OkHttpClient.Builder()
+    val clientBuilder = OkHttpClient.Builder().addInterceptor(TokenInterceptor())
     if (debug) {
         httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
         clientBuilder.addInterceptor(httpLoggingInterceptor)
     }
+
     return clientBuilder.build()
 }
 

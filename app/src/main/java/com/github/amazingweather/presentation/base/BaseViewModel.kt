@@ -5,7 +5,7 @@ import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.github.amazingweather.core.Result
-import com.github.amazingweather.domain.DataLoaderUseCase
+import com.github.amazingweather.core.UseCase
 import com.github.amazingweather.presentation.component.ErrorUiView
 import com.github.amazingweather.presentation.model.Event
 import kotlinx.coroutines.Dispatchers
@@ -18,7 +18,7 @@ Too easy to add a local data source, the mediator livedata can accept a new sour
 
 abstract class BaseViewModel<StateType : Any, ParamsType, ResultType>(
     private val mExtraState: StateType,
-    private val fetchDataUseCase: DataLoaderUseCase<ParamsType, ResultType>? = null
+    private val fetchDataUseCase: UseCase<ParamsType, ResultType>? = null
 ) : ViewModel() {
 
     private val commands: SingleLiveData<Event<BaseEvent>> = SingleLiveData()
@@ -36,7 +36,6 @@ abstract class BaseViewModel<StateType : Any, ParamsType, ResultType>(
 
     init {
         setInitialUiState()
-        fetchData(refreshing = true)
     }
 
     abstract fun getParams(): ParamsType
@@ -77,7 +76,7 @@ abstract class BaseViewModel<StateType : Any, ParamsType, ResultType>(
             }
 
             val listToRender = if (mappedViews.isEmpty()) listOf(
-                TODO("add errorview")
+//                TODO("add errorview")
             ) else mappedViews
 
             setBaseState { copy(list = listToRender, refreshing = false) }
@@ -89,13 +88,15 @@ abstract class BaseViewModel<StateType : Any, ParamsType, ResultType>(
             val errorUiView: List<ErrorUiView>? =
                 when (error) {
                     is Result.Error.ApiError -> listOf(
-                        TODO("add errorview")
+//                        TODO("add errorview")
 
                     )
                     is Result.Error.NetworkError -> listOf(
-                        TODO("add errorview")
+//                        TODO("add errorview")
                     )
-                    is Result.Error.Exception -> null
+                    is Result.Error.Exception -> {
+                        error.throwable.printStackTrace(); null
+                    }
                 }
 
             if (errorUiView != null)
@@ -113,6 +114,10 @@ abstract class BaseViewModel<StateType : Any, ParamsType, ResultType>(
                 onFailure = ::onFetchDataFailure
             )
         }
+    }
+
+    open fun onItemRemoved(adapterPosition: Int) {
+
     }
 
 }

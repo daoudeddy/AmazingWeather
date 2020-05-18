@@ -31,7 +31,7 @@ object Versions {
     const val lifecycleTestingVersion = "2.1.0"
     const val junitVersion = "4.13"
     const val mockk = "1.9.3"
-
+    const val mockito = "1.10.19"
 }
 
 object Deps {
@@ -41,6 +41,7 @@ object Deps {
     const val constraint = "androidx.constraintlayout:constraintlayout:${Versions.constraint}"
     const val coordinator = "androidx.coordinatorlayout:coordinatorlayout:${Versions.support}"
     const val recyclerView = "androidx.recyclerview:recyclerview:${Versions.support}"
+    const val swipeRefreshLayout = "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
     const val design = "com.google.android.material:material:${Versions.support}"
     const val cardview = "androidx.cardview:cardview:1.0.0"
     const val core = "androidx.core:core-ktx:1.2.0"
@@ -53,12 +54,14 @@ object Deps {
     const val gson = "com.google.code.gson:gson:${Versions.gsonVersion}"
     const val converterGson = "com.squareup.retrofit2:converter-gson:${Versions.retrofitVersion}"
 
+    const val dagger = "com.google.dagger:dagger:${Versions.daggerVersion}"
     const val daggerCompiler = "com.google.dagger:dagger-compiler:${Versions.daggerVersion}"
     const val daggerAndroidSupport = "com.google.dagger:dagger-android-support:${Versions.daggerVersion}"
     const val daggerAndroidProcessor = "com.google.dagger:dagger-android-processor:${Versions.daggerVersion}"
 
     const val lifecycleCompiler = "androidx.lifecycle:lifecycle-compiler:${Versions.lifecycleVersion}"
     const val viewmodel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycleVersion}"
+    const val lifecycle = "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.lifecycleVersion}"
     const val lifecycleViewModel = "androidx.lifecycle:lifecycle-viewmodel:${Versions.lifecycleVersion}"
     const val lifecycleTesting = "androidx.arch.core:core-testing:${Versions.lifecycleTestingVersion}"
 
@@ -67,4 +70,5 @@ object Deps {
 
     const val junit = "junit:junit:${Versions.junitVersion}"
     const val mockk = "io.mockk:mockk:${Versions.mockk}"
+    const val mockito = "org.mockito:mockito-core:${Versions.mockito}"
 }

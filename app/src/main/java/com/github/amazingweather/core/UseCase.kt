@@ -1,8 +1,6 @@
-package com.github.amazingweather.domain
+package com.github.amazingweather.core
 
 import android.util.Log
-import com.github.amazingweather.core.EitherErrorOr
-import com.github.amazingweather.core.Result
 import kotlinx.coroutines.*
 
 /**
@@ -12,7 +10,7 @@ Built using Kotlin Coroutines for easy context switching.
 Main purpose to communicate with data layer however it can also be use as a switch between bg and ui threads
 */
 
-abstract class DataLoaderUseCase<ParamsType, ResultType> {
+abstract class UseCase<ParamsType, ResultType> {
 
     private var parent: Job = SupervisorJob()
     private lateinit var scope: CoroutineScope

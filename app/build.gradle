@@ -46,11 +46,15 @@ dependencies {
     implementation Deps.constraint
     implementation Deps.coordinator
     implementation Deps.recyclerView
+    implementation Deps.swipeRefreshLayout
     implementation Deps.design
     implementation Deps.cardview
     implementation Deps.core
     implementation Deps.coroutines
+
+    //lifecycle
     implementation Deps.viewmodel
+    implementation Deps.lifecycle
 
     // Network
     implementation Deps.retrofit
@@ -60,11 +64,13 @@ dependencies {
     implementation Deps.okhttpLoggingInterceptor
 
     // Dependency injection
+    implementation Deps.dagger
     implementation Deps.daggerAndroidSupport
     kapt Deps.daggerCompiler
     kapt Deps.daggerAndroidProcessor
 
     testImplementation Deps.mockk
+    testImplementation Deps.mockito
     testImplementation Deps.junit
 
 

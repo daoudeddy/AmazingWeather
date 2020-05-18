@@ -1,4 +1,6 @@
-package com.github.amazingweather.remote
+package com.github.amazingweather.remote.citesweather
+
+import com.github.amazingweather.domain.citiesweather.CityWeather
 
 data class CityWeatherResponse(
     val base: String,
@@ -13,7 +15,21 @@ data class CityWeatherResponse(
     val visibility: Int,
     val weather: List<Weather>,
     val wind: Wind
-)
+) {
+    fun toDomainModel() =
+        CityWeather(
+            id,
+            name,
+            main.humidity,
+            main.pressure,
+            main.temp,
+            main.temp_max,
+            main.temp_min,
+            wind.speed,
+            weather.firstOrNull()?.main ?: "",
+            weather.firstOrNull()?.icon ?: ""
+        )
+}
 
 data class Clouds(
     val all: Int
