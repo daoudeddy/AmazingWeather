@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
+import com.github.amazingweather.presentation.ui.activity.FragmentContainerActivity
 import dagger.android.support.DaggerFragment
 
 abstract class BaseFragment : DaggerFragment() {
@@ -17,4 +17,5 @@ abstract class BaseFragment : DaggerFragment() {
         savedInstanceState: Bundle?
     ): View = inflater.inflate(layoutId, container, false)
 
+    fun getBaseActivity() = activity as FragmentContainerActivity
 }

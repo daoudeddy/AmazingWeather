@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <SwitchPreference
+        android:key="@string/use_metric"
+        android:icon="@drawable/ic_thermometer"
+        android:title="@string/use_metric"
+        android:defaultValue="true"
+        app:defaultValue="true" />
+
+    <ListPreference
+        android:icon="@drawable/ic_theme_light_dark"
+        android:entries="@array/app_theme_array"
+        android:entryValues="@array/app_theme_array_values"
+        android:key="@string/app_theme"
+        android:title="@string/app_theme"
+        app:defaultValue="2" />
+</PreferenceScreen>

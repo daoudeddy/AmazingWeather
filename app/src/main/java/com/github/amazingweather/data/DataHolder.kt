@@ -1,6 +1,6 @@
 package com.github.amazingweather.data
 
 object DataHolder {
-    val citiesId = mutableListOf<Int>(524901, 703448, 2643743)
-
+    var unit: String = "metric"
+    val citiesId = mutableListOf(524901, 703448, 2643743)
 }

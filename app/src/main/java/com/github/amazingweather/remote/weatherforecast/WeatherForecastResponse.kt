@@ -11,18 +11,18 @@ data class WeatherForecastResponse(
     val message: Double
 ) {
     fun toDomain() = WeatherForecast(
-        city.id, city.name, list.filter { it.dt_txt.contains("12:00:00") }.map {
+        city.id, city.name, list.filter {
+            it.dt_txt.contains("12:00:00")
+        }.map {
             DailyForecast(
                 it.weather.firstOrNull()?.main.orEmpty(),
                 it.weather.firstOrNull()?.icon.orEmpty(),
                 it.dt,
-                it.wind.speed,
+                it.wind.speed.toInt(),
                 it.main.humidity,
-                it.main.temp,
-                it.main.temp_min,
-                it.main.temp_max
+                it.main.temp.toInt()
             )
-        }
+        }.toMutableList()
     )
 }
 
@@ -47,7 +47,7 @@ data class City(
 
 data class CityWeather(
     val clouds: Clouds,
-    val dt: Int,
+    val dt: Long,
     val dt_txt: String,
     val main: Main,
     val rain: Rain,

@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.github.amazingweather.R
-import com.github.amazingweather.core.observe
+import com.github.amazingweather.core.ext.observe
 import com.github.amazingweather.presentation.component.MarginItemDecoration
 import com.github.amazingweather.presentation.component.UiAdapter
 import com.github.amazingweather.presentation.model.Event
@@ -25,6 +25,7 @@ UiAdapter custom built on top of RecyclerView.Adapter along with DiffUtil
 abstract class BaseListFragment<State : Any, ViewModelClass : BaseViewModel<State, *, *>>(
     private val clazz: KClass<ViewModelClass>
 ) : BaseFragment() {
+
 
     open val supportSwipeToRefresh: Boolean = true
 
@@ -74,7 +75,7 @@ abstract class BaseListFragment<State : Any, ViewModelClass : BaseViewModel<Stat
             }
             addItemDecoration(
                 MarginItemDecoration(
-                    resources.getDimension(R.dimen.half_margin).toInt()
+                    resources.getDimension(R.dimen.margin).toInt()
                 )
             )
 

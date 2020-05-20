@@ -4,9 +4,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.github.amazingweather.R
 import com.github.amazingweather.core.Result
 import com.github.amazingweather.core.UseCase
-import com.github.amazingweather.presentation.component.ErrorUiView
+import com.github.amazingweather.presentation.component.view.ErrorUiView
 import com.github.amazingweather.presentation.model.Event
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -76,7 +77,11 @@ abstract class BaseViewModel<StateType : Any, ParamsType, ResultType>(
             }
 
             val listToRender = if (mappedViews.isEmpty()) listOf(
-//                TODO("add errorview")
+                ErrorUiView(
+                    R.drawable.empty_result,
+                    R.string.empty_result_title,
+                    R.string.empty_result_subtitle
+                )
             ) else mappedViews
 
             setBaseState { copy(list = listToRender, refreshing = false) }
@@ -88,11 +93,19 @@ abstract class BaseViewModel<StateType : Any, ParamsType, ResultType>(
             val errorUiView: List<ErrorUiView>? =
                 when (error) {
                     is Result.Error.ApiError -> listOf(
-//                        TODO("add errorview")
+                        ErrorUiView(
+                            R.drawable.ic_server_error,
+                            R.string.server_error_title,
+                            R.string.server_error_subitle
+                        )
 
                     )
                     is Result.Error.NetworkError -> listOf(
-//                        TODO("add errorview")
+                        ErrorUiView(
+                            R.drawable.ic_network_error,
+                            R.string.network_error_title,
+                            R.string.network_error_subitle
+                        )
                     )
                     is Result.Error.Exception -> {
                         error.throwable.printStackTrace(); null

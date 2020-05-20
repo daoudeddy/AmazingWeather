@@ -32,6 +32,10 @@ android {
         jvmTarget = "1.8"
     }
 
+    testOptions {
+        unitTests.returnDefaultValues = true
+    }
+
 }
 
 kapt {
@@ -47,10 +51,12 @@ dependencies {
     implementation Deps.coordinator
     implementation Deps.recyclerView
     implementation Deps.swipeRefreshLayout
+    implementation Deps.preference
     implementation Deps.design
     implementation Deps.cardview
     implementation Deps.core
     implementation Deps.coroutines
+    implementation Deps.googlePlayServices
 
     //lifecycle
     implementation Deps.viewmodel
@@ -71,7 +77,9 @@ dependencies {
 
     testImplementation Deps.mockk
     testImplementation Deps.mockito
+    testImplementation Deps.mockitoInline
     testImplementation Deps.junit
+    testImplementation Deps.coreTesting
 
 
 }

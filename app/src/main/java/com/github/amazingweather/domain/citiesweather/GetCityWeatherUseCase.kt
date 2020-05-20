@@ -9,17 +9,14 @@ class GetCityWeatherUseCase @Inject constructor(
     private val weatherRemoteData: WeatherRemoteData
 ) : UseCase<GetCityWeatherUseCase.Params, CityWeather>() {
 
-    data class Params(val cityId: String = "", val longitude: String?, val latitude: String?)
+    data class Params(val longitude: Double, val latitude: Double)
 
     override suspend fun run(params: Params): EitherErrorOr<CityWeather> {
         with(params) {
-            return when {
-                latitude != null && longitude != null -> weatherRemoteData.getWeatherByCoordination(
-                    latitude,
-                    longitude
-                )
-                else -> weatherRemoteData.getWeatherById(cityId)
-            }
+            return weatherRemoteData.getWeatherByCoordination(
+                latitude,
+                longitude
+            )
         }
     }
 }

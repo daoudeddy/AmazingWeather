@@ -31,7 +31,7 @@ object Versions {
     const val lifecycleTestingVersion = "2.1.0"
     const val junitVersion = "4.13"
     const val mockk = "1.9.3"
-    const val mockito = "1.10.19"
+    const val mockito = "3.3.3"
 }
 
 object Deps {
@@ -43,8 +43,10 @@ object Deps {
     const val recyclerView = "androidx.recyclerview:recyclerview:${Versions.support}"
     const val swipeRefreshLayout = "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
     const val design = "com.google.android.material:material:${Versions.support}"
+    const val preference = "androidx.preference:preference-ktx:1.1.1"
     const val cardview = "androidx.cardview:cardview:1.0.0"
     const val core = "androidx.core:core-ktx:1.2.0"
+    const val googlePlayServices = "com.google.android.gms:play-services-maps:17.0.0"
 
     const val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutines}"
     const val androidCoroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutines}"
@@ -71,4 +73,6 @@ object Deps {
     const val junit = "junit:junit:${Versions.junitVersion}"
     const val mockk = "io.mockk:mockk:${Versions.mockk}"
     const val mockito = "org.mockito:mockito-core:${Versions.mockito}"
+    const val mockitoInline = "org.mockito:mockito-inline:${Versions.mockito}"
+    const val coreTesting = "androidx.arch.core:core-testing:2.1.0"
 }

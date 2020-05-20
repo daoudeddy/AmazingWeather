@@ -11,7 +11,7 @@ fun createNetworkClient(baseUrl: String, debug: Boolean = false): Retrofit.Build
 
 private fun httpClient(debug: Boolean): OkHttpClient {
     val httpLoggingInterceptor = HttpLoggingInterceptor(HttpLoggingInterceptor.Logger.DEFAULT)
-    val clientBuilder = OkHttpClient.Builder().addInterceptor(TokenInterceptor())
+    val clientBuilder = OkHttpClient.Builder().addInterceptor(QueryInterceptor())
     if (debug) {
         httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
         clientBuilder.addInterceptor(httpLoggingInterceptor)

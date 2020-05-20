@@ -1,14 +1,23 @@
 package com.github.amazingweather.presentation.component
 
+import android.content.Context
 import android.view.ViewGroup
 import androidx.recyclerview.widget.*
 import com.github.amazingweather.presentation.base.BaseUiView
 import com.github.amazingweather.presentation.base.BaseViewHolder
+import com.github.amazingweather.presentation.component.viewholder.ViewHolderFactory
 
 class UiAdapter : RecyclerView.Adapter<BaseViewHolder<BaseUiView>>() {
 
     companion object {
         const val SPAN_COUNT = 6
+    }
+
+    fun layoutManager(context: Context) = GridLayoutManager(context, 5).apply {
+        spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
+            override fun getSpanSize(position: Int): Int =
+                getItem(position)?.spanSize ?: SPAN_COUNT
+        }
     }
 
     private val currentList: List<BaseUiView> get() = mDiffer.currentList
@@ -26,7 +35,7 @@ class UiAdapter : RecyclerView.Adapter<BaseViewHolder<BaseUiView>>() {
     ): BaseViewHolder<BaseUiView> = ViewHolderFactory.getViewHolder(parent, viewType)
 
     override fun getItemViewType(position: Int): Int =
-        getItem(position)?.itemViewType?:ViewHolderFactory.EMPTY
+        getItem(position)?.itemViewType ?: ViewHolderFactory.EMPTY
 
     override fun getItemCount(): Int = currentList.size
 
@@ -57,7 +66,8 @@ class UiAdapter : RecyclerView.Adapter<BaseViewHolder<BaseUiView>>() {
 
     private inline fun BaseViewHolder<BaseUiView>.bindClicksAnd(
         position: Int,
-        func: BaseViewHolder<BaseUiView>.(BaseUiView) -> Unit) {
+        func: BaseViewHolder<BaseUiView>.(BaseUiView) -> Unit
+    ) {
 
         getItem(position)?.let {
             itemView.setOnClickListener { _ ->

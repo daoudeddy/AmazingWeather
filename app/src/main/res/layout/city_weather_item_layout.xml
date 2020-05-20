@@ -4,11 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginLeft="16dp"
-    android:layout_marginTop="4dp"
-
-    android:layout_marginRight="16dp"
-    android:layout_marginBottom="4dp"
+    android:paddingBottom="820dp"
+    app:contentPaddingBottom="15dp"
+    app:cardCornerRadius="12dp"
     app:cardElevation="@dimen/card_elevation">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -30,15 +28,19 @@
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_marginStart="@dimen/half_margin"
+            android:layout_marginBottom="220dp"
             android:scaleType="centerCrop"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cityNameTV" />
 
         <LinearLayout
+            android:id="@+id/linearLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/half_margin"
+            android:gravity="center_vertical"
             android:orientation="vertical"
+
             app:layout_constraintBottom_toBottomOf="@+id/cityWeatherIconIV"
             app:layout_constraintStart_toEndOf="@id/cityWeatherIconIV"
             app:layout_constraintTop_toTopOf="@+id/cityWeatherIconIV">
@@ -55,10 +57,38 @@
                 android:id="@+id/cityTempHighLowTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
+                android:textAppearance="@style/AppTheme.Caption"
                 app:layout_constraintStart_toEndOf="@id/cityWeatherIconIV"
                 app:layout_constraintTop_toBottomOf="@+id/cityTempAndCondTextView"
                 tools:text="High:30° Low:16°" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/half_margin"
+            android:layout_marginEnd="@dimen/half_margin"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/linearLayout">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/windTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/AppTheme.Caption"
+                app:layout_constraintStart_toEndOf="@+id/linearLayout"
+                tools:text="Wind: 16 km/h" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/humidityTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/AppTheme.Caption"
+                app:layout_constraintStart_toEndOf="@+id/linearLayout"
+                tools:text="Humidity: 60%" />
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>

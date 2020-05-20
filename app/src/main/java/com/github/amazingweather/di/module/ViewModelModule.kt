@@ -25,6 +25,6 @@ abstract class ViewModelModule {
 
     @Binds
     @IntoMap
-    @ViewModelKey(MainViewModel::class)
+    @ViewModelKey(WeatherForecastViewModel::class)
     abstract fun bindWeatherForecastViewModel(viewModel: WeatherForecastViewModel): ViewModel
 }
