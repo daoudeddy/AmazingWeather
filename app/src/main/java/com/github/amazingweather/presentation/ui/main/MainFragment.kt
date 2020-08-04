@@ -19,7 +19,7 @@ import javax.inject.Inject
 
 
 @ActivityScoped
-class MainFragment @Inject constructor() : BaseListFragment<MainState, MainViewModel>(
+open class MainFragment @Inject constructor() : BaseListFragment<MainState, MainViewModel>(
     MainViewModel::class
 ), MapsFragment.FragmentCallback, SettingsFragment.FragmentCallback {
 
