@@ -75,4 +75,13 @@ object Deps {
     const val mockito = "org.mockito:mockito-core:${Versions.mockito}"
     const val mockitoInline = "org.mockito:mockito-inline:${Versions.mockito}"
     const val coreTesting = "androidx.arch.core:core-testing:2.1.0"
+    const val runner = "androidx.test:runner:1.2.0"
+    const val testCore = "androidx.test:core:1.2.0"
+    const val testRules = "androidx.test:rules:1.2.0"
+    const val junitExt = "androidx.test.ext:junit:1.1.1"
+    const val truthExt = "androidx.test.ext:truth:1.2.0"
+    const val espressoCore = "androidx.test.espresso:espresso-core:3.2.0"
+    const val espressoIntents = "androidx.test.espresso:espresso-intents:3.2.0"
+    const val espressoContrib = "androidx.test.espresso:espresso-contrib:3.2.0"
+
 }
