@@ -72,6 +72,7 @@ dependencies {
     // Dependency injection
     implementation Deps.dagger
     implementation Deps.daggerAndroidSupport
+
     kapt Deps.daggerCompiler
     kapt Deps.daggerAndroidProcessor
 
@@ -79,11 +80,13 @@ dependencies {
     testImplementation Deps.mockk
     testImplementation Deps.mockito
     testImplementation Deps.mockitoInline
-    testImplementation Deps.testCore
-    testImplementation Deps.testRules
-    testImplementation Deps.junitExt
-    testImplementation Deps.truthExt
-    testImplementation Deps.espressoCore
-    testImplementation Deps.espressoIntents
-    testImplementation Deps.espressoContrib
+
+    androidTestImplementation Deps.testCore
+    androidTestImplementation Deps.testRules
+    androidTestImplementation Deps.junitExt
+    androidTestImplementation Deps.truthExt
+    androidTestImplementation Deps.espressoCore
+    androidTestImplementation Deps.espressoIntents
+    androidTestImplementation Deps.espressoContrib
+    implementation Deps.espressoidlingResource
 }

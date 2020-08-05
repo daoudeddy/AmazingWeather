@@ -15,6 +15,7 @@ import com.github.amazingweather.core.ext.afterTextChanged
 import com.github.amazingweather.core.ext.areAllGranted
 import com.github.amazingweather.core.ext.newFragment
 import com.github.amazingweather.core.ext.openFragment
+import com.github.amazingweather.presentation.ui.idling.TestIdlingResource
 import com.github.amazingweather.presentation.ui.main.MainFragment
 import dagger.android.support.DaggerAppCompatActivity
 import kotlinx.android.synthetic.main.activty_container.*
@@ -23,10 +24,13 @@ class FragmentContainerActivity : DaggerAppCompatActivity() {
 
     private var textWatcher: TextWatcher? = null
 
+    val testIdlingResource: TestIdlingResource by lazy { TestIdlingResource() }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activty_container)
         setSupportActionBar(toolbar)
+
         supportFragmentManager.addOnBackStackChangedListener {
             supportActionBar?.setDisplayHomeAsUpEnabled(supportFragmentManager.fragments.count() > 1)
         }
@@ -94,6 +98,7 @@ class FragmentContainerActivity : DaggerAppCompatActivity() {
     }
 
     fun showSearch(onQueryChange: (String) -> Unit) {
+
         searchContainer.visibility = VISIBLE
 
         searchClear.setOnClickListener {
