@@ -80,6 +80,7 @@ dependencies {
     testImplementation Deps.mockk
     testImplementation Deps.mockito
     testImplementation Deps.mockitoInline
+    testImplementation Deps.junit
 
     androidTestImplementation Deps.testCore
     androidTestImplementation Deps.testRules
