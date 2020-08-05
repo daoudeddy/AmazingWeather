@@ -32,6 +32,7 @@ open class MainFragment @Inject constructor() : BaseListFragment<MainState, Main
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         mViewModel.fetchData(DataHolder.citiesId)
+
         bar.setOnMenuItemClickListener {
             handleItemClicked(it); true
         }
@@ -46,7 +47,9 @@ open class MainFragment @Inject constructor() : BaseListFragment<MainState, Main
 
     private fun handleItemClicked(item: MenuItem) {
         when (item.itemId) {
-            R.id.search -> getBaseActivity().showSearch(::filterSearch)
+            R.id.search -> {
+                getBaseActivity().showSearch(::filterSearch)
+            }
             R.id.settings -> getBaseActivity().openFragment(
                 newFragment<SettingsFragment>()
                     .apply { setCallback(this@MainFragment) },
@@ -55,7 +58,6 @@ open class MainFragment @Inject constructor() : BaseListFragment<MainState, Main
             )
         }
     }
-
 
     private fun filterSearch(query: String) {
         mViewModel.filter(query)

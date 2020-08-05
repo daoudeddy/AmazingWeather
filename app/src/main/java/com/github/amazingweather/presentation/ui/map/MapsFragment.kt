@@ -87,25 +87,26 @@ class MapsFragment @Inject constructor() : BaseFragment(), OnMapReadyCallback {
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
 
+        mMap.setOnMyLocationButtonClickListener { espressoTestIdle(3000);false }
+
         getBaseActivity().requestPermissions(
             arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
             LOCATION_REQ_CODE,
             onSuccess = { mMap.isMyLocationEnabled = true })
 
+        espressoTestIdle(1000)
+
         mMap.setOnMapClickListener { point ->
+            espressoTestIdle(3000)
+
             mMap.moveCamera(CameraUpdateFactory.newLatLng(point))
             marker?.remove()
             marker = mMap.addMarker(MarkerOptions().position(point))
 
-            view?.snackbar(R.string.new_location_added, R.string.add_city) {
-                callback.onPlaceAdded(point.longitude, point.latitude)
-                getBaseActivity().supportFragmentManager.apply {
-                    beginTransaction()
-                        .remove(this@MapsFragment)
-                        .commit()
-
-                    popBackStack()
-                }
+            callback.onPlaceAdded(point.longitude, point.latitude)
+            getBaseActivity().supportFragmentManager.apply {
+                beginTransaction().remove(this@MapsFragment).commit()
+                popBackStack()
             }
         }
     }

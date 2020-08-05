@@ -23,8 +23,8 @@ inline fun <reified T> Fragment.args(key: String, default: T) = lazy {
 }
 
 fun View.snackbar(@StringRes text: Int, @StringRes buttonText: Int, action: () -> Unit) {
-    Snackbar
-        .make(this, text, Snackbar.LENGTH_LONG)
+   return Snackbar
+        .make(this, text, Snackbar.LENGTH_INDEFINITE)
         .setAction(buttonText) { action() }
         .show()
 }

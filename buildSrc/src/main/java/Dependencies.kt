@@ -83,5 +83,6 @@ object Deps {
     const val espressoCore = "androidx.test.espresso:espresso-core:3.2.0"
     const val espressoIntents = "androidx.test.espresso:espresso-intents:3.2.0"
     const val espressoContrib = "androidx.test.espresso:espresso-contrib:3.2.0"
+    const val espressoidlingResource = "androidx.test.espresso:espresso-idling-resource:3.2.0"
 
 }
